@@ -34,4 +34,17 @@ def get_db():
 @app.get("/api/incidents")
 def get_incidents(db: Session = Depends(get_db)):
     logger.info("Запрос списка инцидентов")
-    return {"status": "success", "data": []}
+
+    incidents = db.query(Incident).all()
+
+    return {
+        "status": "success",
+        "data": [
+            {
+                "id": i.id,
+                "title": i.title,
+                "status": i.status
+            }
+            for i in incidents
+        ]
+    }
