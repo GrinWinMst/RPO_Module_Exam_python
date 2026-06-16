@@ -1,6 +1,6 @@
 import logging
 import os
-LOG_DIR = "/var/log/nexus_monitor_production/" 
+LOG_DIR = "logs"
 os.makedirs(LOG_DIR, exist_ok=True)
 
 logging.basicConfig(
